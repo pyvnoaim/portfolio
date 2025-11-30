@@ -6,6 +6,7 @@
     --foreground: #ededed;
   }
 }
+
 body {
   font-family: var(--font-jetbrains);
   background: var(--background);

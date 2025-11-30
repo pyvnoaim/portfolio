@@ -11,14 +11,15 @@ export const metadata: Metadata = {
   title: '@pyvnoaim',
   description: '+aim +peripherals',
 };
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${jetbrains.variable} antialiased`}>{children}</body>
+    <html lang="en" className={`${jetbrains.variable} antialiased`}>
+      <body>{children}</body>
     </html>
   );
 }
