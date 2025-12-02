@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 items-center text-white">
         <div className="flex items-center space-x-3">
           <div className="relative h-5 w-5">
-            <span className="absolute inset-0 h-5 w-5 rounded-sm bg-[#ff9a9a] opacity-50 animate-ping z-0" />
+            <span className="absolute inset-0 h-5 w-5 rounded-sm bg-[#ff9a9a] opacity-30 animate-ping z-0" />
             <span className="absolute inset-0 h-5 w-5 rounded-sm bg-[#ff9a9a] z-10" />
           </div>
 
