@@ -1,10 +1,10 @@
-import Footer from '@/components/Footer';
-import TextType from '@/components/TextType';
+import Footer from '@/components/Footer'
+import TextType from '@/components/TextType'
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col bg-zinc-900">
-      <main className="flex-1 flex items-center justify-center">
+    <div className="flex min-h-screen flex-col bg-zinc-900">
+      <main className="flex flex-1 items-center justify-center">
         <div className="flex items-center text-4xl font-bold text-white">
           <span>@</span>
           <TextType
@@ -18,5 +18,5 @@ export default function Home() {
 
       <Footer />
     </div>
-  );
+  )
 }

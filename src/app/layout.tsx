@@ -1,11 +1,11 @@
-import type { Metadata } from 'next';
-import { JetBrains_Mono } from 'next/font/google';
-import './globals.css';
+import type { Metadata } from 'next'
+import { JetBrains_Mono } from 'next/font/google'
+import './globals.css'
 
 const jetbrains = JetBrains_Mono({
   subsets: ['latin'],
   variable: '--font-jetbrains',
-});
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://pyvno.xyz'),
@@ -34,22 +34,18 @@ export const metadata: Metadata = {
     description: '+aim +peripherals',
     images: ['/banner.png'],
   },
-};
+}
 
 export const viewport = {
   width: 'device-width',
   initialScale: 1,
   themeColor: '#ff9a9a',
-};
+}
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${jetbrains.variable} antialiased`}>
       <body>{children}</body>
     </html>
-  );
+  )
 }
