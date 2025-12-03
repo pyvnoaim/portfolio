@@ -1,4 +1,3 @@
-import Footer from '@/components/Footer'
 import TextType from '@/components/TextType'
 
 export default function Home() {
@@ -8,15 +7,13 @@ export default function Home() {
         <div className="flex items-center text-4xl font-bold text-white">
           <span>@</span>
           <TextType
-            text={['pyvnoaim', 'rtiaul', 'pyvno']}
+            text={['pyvnoaim', 'rtiaul']}
             cursorCharacter="_"
             typingSpeed={75}
             deletingSpeed={75}
           />
         </div>
       </main>
-
-      <Footer />
     </div>
   )
 }

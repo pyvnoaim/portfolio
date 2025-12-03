@@ -30,7 +30,7 @@ export default function Footer() {
         </div>
 
         <div className="text-center">
-          made by <span className="text-[#ff9a9a]">@pyvnoaim</span>{' '}
+          made by <span className="text-[#ff9a9a]">@pyvnoaim</span>
         </div>
 
         <nav className="flex justify-end space-x-4" aria-label="Social media links">
