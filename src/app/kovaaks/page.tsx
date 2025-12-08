@@ -6,7 +6,12 @@ export default function Peripherals() {
       <main className="flex flex-1 items-center justify-center">
         <div className="flex items-center text-4xl font-bold text-white">
           <span>@</span>
-          <TextType text={['kovaaks']} cursorCharacter="_" typingSpeed={75} deletingSpeed={75} />
+          <TextType
+            text={['kovaaks', 'crosshairs,', 'themes', 'playlists', 'sounds']}
+            cursorCharacter="_"
+            typingSpeed={75}
+            deletingSpeed={75}
+          />
         </div>
       </main>
     </div>

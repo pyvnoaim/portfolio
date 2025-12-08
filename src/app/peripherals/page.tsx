@@ -7,7 +7,7 @@ export default function Peripherals() {
         <div className="flex items-center text-4xl font-bold text-white">
           <span>@</span>
           <TextType
-            text={['peripherals']}
+            text={['peripherals', 'mousepads', 'mice', 'keyboards']}
             cursorCharacter="_"
             typingSpeed={75}
             deletingSpeed={75}
