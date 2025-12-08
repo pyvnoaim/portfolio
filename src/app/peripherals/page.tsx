@@ -1,4 +1,9 @@
 import TextType from '@/components/TextType'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'peripherals',
+}
 
 export default function Peripherals() {
   return (

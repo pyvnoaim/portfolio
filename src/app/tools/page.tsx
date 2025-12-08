@@ -1,6 +1,11 @@
 import TextType from '@/components/TextType'
+import type { Metadata } from 'next'
 
-export default function Peripherals() {
+export const metadata: Metadata = {
+  title: 'tools',
+}
+
+export default function Tools() {
   return (
     <div className="flex min-h-screen flex-col bg-zinc-900">
       <main className="flex flex-1 items-center justify-center">

@@ -11,7 +11,10 @@ const jetbrains = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://pyvno.xyz'),
-  title: 'pyvolio',
+  title: {
+    template: '%s | pyvolio',
+    default: 'home | pyvolio',
+  },
   description: '+aim +peripherals',
   keywords: ['gaming', 'peripherals', 'aim', 'tech', 'pyvolio', 'pyvno'],
   authors: [{ name: 'pyvno' }],
@@ -35,6 +38,7 @@ export const metadata: Metadata = {
     title: 'pyvolio',
     description: '+aim +peripherals',
     images: ['/banner.png'],
+    creator: '@pyvnoaim',
   },
 }
 
