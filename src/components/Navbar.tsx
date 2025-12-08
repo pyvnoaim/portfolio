@@ -11,6 +11,7 @@ const navItems: NavItem[] = [
   { label: 'home', href: '/' },
   { label: 'peripherals', href: '/peripherals' },
   { label: 'kovaaks', href: '/kovaaks' },
+  { label: 'tools', href: '/tools' },
 ]
 
 export const Navbar = () => {
