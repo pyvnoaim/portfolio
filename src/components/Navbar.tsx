@@ -19,7 +19,7 @@ export const Navbar: React.FC = () => {
   const pathname = usePathname()
 
   return (
-    <nav className="fixed top-0 z-50 flex w-full justify-center bg-transparent py-4">
+    <nav className="fixed top-0 z-50 flex w-full justify-center py-4 select-none">
       <div className="flex space-x-6">
         {navItems.map((item) => {
           const isActive = pathname === item.href
@@ -28,7 +28,7 @@ export const Navbar: React.FC = () => {
             <Link
               key={item.href}
               href={item.href}
-              className={`relative flex items-center justify-center border-0 px-4 py-2 transition-all duration-300 hover:scale-105 ${
+              className={`relative flex items-center justify-center px-4 py-2 transition-all duration-300 hover:scale-105 ${
                 isActive ? 'font-semibold text-[#ff9a9a]' : 'hover:text-[#ff9a9a]'
               }`}
               aria-label={item.label}
