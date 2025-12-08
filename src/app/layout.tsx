@@ -49,9 +49,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${jetbrains.variable} antialiased`}>
       <body className="flex h-screen flex-col">
         <Navbar />
-
         <main className="flex flex-1 items-center justify-center overflow-hidden">{children}</main>
-
         <Footer />
       </body>
     </html>
