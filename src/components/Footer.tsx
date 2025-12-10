@@ -4,8 +4,8 @@ import DecryptedText from '@/components/DecryptedText'
 
 export default function Footer() {
   return (
-    <footer className="border-t bg-zinc-900 py-8 select-none">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center px-4 text-white md:grid-cols-3">
+    <footer className="border-t border-zinc-700 bg-zinc-900 py-8 duration-300 select-none hover:border-zinc-500">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center px-4 md:grid-cols-3">
         <div className="flex items-center space-x-3">
           <div className="relative h-5 w-5">
             <span className="absolute inset-0 z-0 h-5 w-5 animate-ping rounded-sm bg-[#ff9a9a] opacity-30" />
