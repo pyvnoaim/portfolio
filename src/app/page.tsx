@@ -6,7 +6,6 @@ import { MdOutlineMouse } from 'react-icons/md'
 import { FaRegKeyboard } from 'react-icons/fa'
 import { LuSquareMousePointer } from 'react-icons/lu'
 import { Peripheral } from '@/types'
-import TextType from '@/components/TextType'
 
 const iconsMap = {
   mouse: <MdOutlineMouse />,
@@ -22,9 +21,9 @@ export default function Home() {
   useEffect(() => {
     const fetchPeripherals = async () => {
       try {
-        const res = await fetch('/api/peripherals')
+        const res = await fetch('/api/peripherals/active')
         const data: Peripheral[] = await res.json()
-        setItems(data.filter((item) => item.using))
+        setItems(data)
       } catch (err) {
         console.error('Failed to fetch peripherals', err)
       } finally {
@@ -40,17 +39,8 @@ export default function Home() {
     return <p className="mt-8 text-center text-zinc-400">no active peripherals found</p>
 
   return (
-    <div className="flex min-h-screen flex-col">
-      <main className="flex flex-1 flex-col items-center justify-center gap-8 py-8">
-        <div className="flex items-center text-4xl font-bold text-white">
-          <span>@</span>
-          <TextType
-            text={['pyvnoaim', 'rtiaul']}
-            cursorCharacter="_"
-            typingSpeed={75}
-            deletingSpeed={75}
-          />
-        </div>
+    <div className="flex min-h-screen flex-col items-center justify-center">
+      <main className="flex flex-col items-center justify-center gap-6 sm:gap-8">
         <div className="grid grid-cols-1 gap-4 select-none sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {items.map((item) => (
             <div

@@ -8,5 +8,7 @@ export async function GET() {
   const data = fs.readFileSync(filePath, 'utf8')
   const peripherals: Peripheral[] = JSON.parse(data)
 
-  return NextResponse.json(peripherals)
+  const activePeripherals = peripherals.filter((item) => item.using)
+
+  return NextResponse.json(activePeripherals)
 }

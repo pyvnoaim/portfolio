@@ -38,5 +38,77 @@
     "name": "akitsu",
     "sub": "",
     "using": false
+  },
+  {
+    "id": 6,
+    "type": "mouse",
+    "brand": "endgame gear",
+    "name": "op1 8k v2",
+    "sub": "",
+    "using": false
+  },
+  {
+    "id": 7,
+    "type": "mouse",
+    "brand": "pulsar",
+    "name": "tenz signature",
+    "sub": "",
+    "using": false
+  },
+  {
+    "id": 8,
+    "type": "mousepad",
+    "brand": "lamzu",
+    "name": "energon pro",
+    "sub": "",
+    "using": false
+  },
+  {
+    "id": 9,
+    "type": "mousepad",
+    "brand": "lethal gaming gear",
+    "name": "saturn",
+    "sub": "",
+    "using": false
+  },
+  {
+    "id": 10,
+    "type": "mousepad",
+    "brand": "tekkusai",
+    "name": "singularity",
+    "sub": "",
+    "using": false
+  },
+  {
+    "id": 11,
+    "type": "mousepad",
+    "brand": "wallhack",
+    "name": "cr-005",
+    "sub": "",
+    "using": false
+  },
+  {
+    "id": 12,
+    "type": "mousepad",
+    "brand": "wallhack",
+    "name": "sy-001",
+    "sub": "",
+    "using": false
+  },
+  {
+    "id": 13,
+    "type": "mousepad",
+    "brand": "wallhack",
+    "name": "sp-004",
+    "sub": "twins",
+    "using": false
+  },
+  {
+    "id": 14,
+    "type": "headset",
+    "brand": "truthear",
+    "name": "crinacle zero",
+    "sub": "blue",
+    "using": false
   }
 ]
