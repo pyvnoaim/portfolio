@@ -22,9 +22,8 @@ export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <nav className="fixed top-0 z-50 w-full bg-zinc-900/70 py-4 backdrop-blur-sm select-none">
+    <nav className="fixed top-0 z-50 w-full bg-zinc-900/70 py-4 backdrop-blur-sm duration-300 select-none">
       <div className="flex items-center justify-between px-4 sm:px-0">
-        {/* Desktop Links */}
         <div className="hidden w-full justify-center gap-6 sm:flex">
           {navItems.map((item) => {
             const isActive = pathname === item.href
@@ -50,7 +49,6 @@ export const Navbar: React.FC = () => {
           })}
         </div>
 
-        {/* Mobile Hamburger */}
         <div className="flex w-full justify-end sm:hidden">
           <button
             className="text-2xl text-zinc-300 hover:text-[#ff9a9a]"
@@ -61,7 +59,6 @@ export const Navbar: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       {isOpen && (
         <div className="mt-2 flex flex-col gap-4 px-4 sm:hidden">
           {navItems.map((item) => {

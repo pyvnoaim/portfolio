@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "type": "mouse",
+    "brand": "pulsar",
+    "name": "x2f",
+    "sub": "artisan mizugumo futae p8",
+    "using": true
+  },
+  {
+    "id": 2,
+    "type": "mousepad",
+    "brand": "aristan",
+    "name": "fx raiden",
+    "sub": "soft - daidai orange",
+    "using": true
+  },
+  {
+    "id": 3,
+    "type": "keyboard",
+    "brand": "wooting",
+    "name": "60he",
+    "sub": "",
+    "using": true
+  },
+  {
+    "id": 4,
+    "type": "headset",
+    "brand": "tekkusai",
+    "name": "lucid",
+    "sub": "",
+    "using": true
+  },
+  {
+    "id": 5,
+    "type": "mouse",
+    "brand": "vancer x arbiter studio",
+    "name": "akitsu",
+    "sub": "",
+    "using": false
+  }
+]
