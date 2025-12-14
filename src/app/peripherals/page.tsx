@@ -50,9 +50,18 @@ export default function Peripherals() {
   }, [])
 
   if (loading)
-    return <p className="mt-6 text-center text-sm text-zinc-400">loading peripherals...</p>
+    return (
+      <main className="flex flex-1 items-center justify-center">
+        <p className="text-zinc-400">loading peripherals...</p>
+      </main>
+    )
+
   if (!items.length)
-    return <p className="mt-6 text-center text-sm text-zinc-400">no peripherals found</p>
+    return (
+      <main className="flex flex-1 items-center justify-center">
+        <p className="text-zinc-400">no peripherals found</p>
+      </main>
+    )
 
   const grouped: Record<string, Peripheral[]> = {}
   items.forEach((item) => {
@@ -64,7 +73,7 @@ export default function Peripherals() {
   })
 
   return (
-    <div className="flex min-h-screen px-4 sm:px-6 md:px-8">
+    <div className="flex min-h-screen px-4 pb-4 sm:px-6 sm:pb-0 md:px-8">
       <div className="flex flex-1 items-center justify-center">
         <div className="w-full max-w-7xl">
           {Object.keys(grouped).map((type) => (

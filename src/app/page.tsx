@@ -34,9 +34,19 @@ export default function Home() {
     fetchPeripherals()
   }, [])
 
-  if (loading) return <p className="mt-8 text-center text-zinc-400">loading peripherals...</p>
+  if (loading)
+    return (
+      <main className="flex flex-1 items-center justify-center">
+        <p className="text-zinc-400">loading peripherals...</p>
+      </main>
+    )
+
   if (!items.length)
-    return <p className="mt-8 text-center text-zinc-400">no active peripherals found</p>
+    return (
+      <main className="flex flex-1 items-center justify-center">
+        <p className="text-zinc-400">no active peripherals found</p>
+      </main>
+    )
 
   return (
     <main className="flex flex-1 items-center justify-center">
