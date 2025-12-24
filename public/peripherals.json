@@ -5,15 +5,17 @@
     "brand": "pulsar",
     "name": "x2f",
     "sub": "artisan mizugumo futae p8",
-    "using": false
+    "using": false,
+    "link": "https://www.maxgaming.gg/de/kabellos/labx2f-size1-schwarz"
   },
   {
     "id": 2,
     "type": "mousepad",
-    "brand": "aristan",
+    "brand": "artisan",
     "name": "fx raiden",
     "sub": "soft - daidai orange",
-    "using": true
+    "using": true,
+    "link": "https://www.maxgaming.gg/de/mauspads/mauspad-fx-raiden-soft-xl-daidai-orange"
   },
   {
     "id": 3,
@@ -21,7 +23,8 @@
     "brand": "wooting",
     "name": "60he",
     "sub": "",
-    "using": true
+    "using": true,
+    "link": "https://wooting.io/wooting-60he"
   },
   {
     "id": 4,
@@ -29,7 +32,8 @@
     "brand": "tekkusai",
     "name": "lucid",
     "sub": "",
-    "using": true
+    "using": true,
+    "link": "https://www.maxgaming.gg/de/kopfhorer/lucid-in-ear-headset"
   },
   {
     "id": 5,
@@ -37,7 +41,8 @@
     "brand": "vancer x arbiter studio",
     "name": "akitsu",
     "sub": "",
-    "using": false
+    "using": false,
+    "link": "https://www.maxgaming.gg/de/kabellos/vancer-akitsu-carbon-fiber"
   },
   {
     "id": 6,
@@ -45,15 +50,17 @@
     "brand": "endgame gear",
     "name": "op1 8k v2",
     "sub": "artisan mizugumo futae p8",
-    "using": true
+    "using": true,
+    "link": "https://www.maxgaming.gg/de/kabelgebunden/endgame-gear-op1-8k-v2-vit"
   },
   {
     "id": 7,
     "type": "mouse",
     "brand": "pulsar",
     "name": "tenz signature",
-    "sub": "",
-    "using": false
+    "sub": "want to sell",
+    "using": false,
+    "link": "https://www.maxgaming.gg/de/kabellos/pulsar-tenz-signature-edition"
   },
   {
     "id": 8,
@@ -61,7 +68,8 @@
     "brand": "lamzu",
     "name": "energon pro",
     "sub": "",
-    "using": false
+    "using": false,
+    "link": "https://www.maxgaming.gg/de/mauspads/energon-pro-hybrid-gaming-mauspad-xsoft"
   },
   {
     "id": 9,
@@ -69,15 +77,17 @@
     "brand": "lethal gaming gear",
     "name": "saturn",
     "sub": "",
-    "using": false
+    "using": false,
+    "link": "https://www.maxgaming.gg/de/mauspads/saturn-gaming-mauspad-xl"
   },
   {
     "id": 10,
     "type": "mousepad",
     "brand": "tekkusai",
     "name": "singularity",
-    "sub": "",
-    "using": false
+    "sub": "founder's edition",
+    "using": false,
+    "link": "https://www.maxgaming.gg/de/mauspads/singularity-glas-mauspad-fe"
   },
   {
     "id": 11,
@@ -85,7 +95,8 @@
     "brand": "wallhack",
     "name": "cr-005",
     "sub": "black",
-    "using": false
+    "using": false,
+    "link": "https://wallhack.com/de-de/products/cr-005-black"
   },
   {
     "id": 12,
@@ -93,7 +104,8 @@
     "brand": "wallhack",
     "name": "sy-001",
     "sub": "frenzy sora",
-    "using": false
+    "using": false,
+    "link": "https://wallhack.com/de-de/pages/blind-box"
   },
   {
     "id": 13,
@@ -101,7 +113,8 @@
     "brand": "wallhack",
     "name": "sp-004",
     "sub": "twins",
-    "using": false
+    "using": false,
+    "link": "https://wallhack.com/de-de/products/sp-004-black"
   },
   {
     "id": 14,
@@ -109,6 +122,7 @@
     "brand": "truthear",
     "name": "crinacle zero",
     "sub": "blue",
-    "using": false
+    "using": false,
+    "link": "https://www.maxgaming.gg/de/kopfhorer/zero-iem-kopfhorer-blau"
   }
 ]

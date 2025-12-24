@@ -6,6 +6,8 @@ import { MdOutlineMouse } from 'react-icons/md'
 import { FaRegKeyboard } from 'react-icons/fa'
 import { LuSquareMousePointer } from 'react-icons/lu'
 import type { Peripheral } from '@/types'
+import PeripheralCard from '@/components/PeripheralCard'
+import PeripheralSkeleton from '@/components/PeripheralCardSkeleton'
 
 const ICONS: Record<Peripheral['type'], React.ReactElement> = {
   mouse: <MdOutlineMouse className="text-lg" />,
@@ -21,20 +23,20 @@ const TYPE_NAMES: Record<Peripheral['type'], string> = {
   headset: 'headsets',
 }
 
+const TYPE_ORDER: Peripheral['type'][] = ['mouse', 'mousepad', 'keyboard', 'headset']
+
 export default function Page() {
   const [items, setItems] = useState<Peripheral[]>([])
   const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(false)
 
   useEffect(() => {
     const fetchPeripherals = async () => {
       try {
         const res = await fetch('/api/peripherals')
-        if (!res.ok) throw new Error()
         const data: Peripheral[] = await res.json()
         setItems(data)
-      } catch {
-        setError(true)
+      } catch (err) {
+        console.error('Failed to fetch peripherals', err)
       } finally {
         setLoading(false)
       }
@@ -44,7 +46,10 @@ export default function Page() {
   }, [])
 
   const grouped = useMemo(() => {
-    const map: Record<string, Peripheral[]> = {}
+    const map: Record<Peripheral['type'], Peripheral[]> = {} as Record<
+      Peripheral['type'],
+      Peripheral[]
+    >
 
     items
       .slice()
@@ -62,41 +67,28 @@ export default function Page() {
     return map
   }, [items])
 
-  if (loading) return <p className="text-center text-zinc-400">loading peripherals...</p>
+  const skeletonCount = 8
 
-  if (error) return <p className="text-center text-red-400">failed to load peripherals</p>
-
-  if (!items.length) return <p className="text-center text-zinc-400">no peripherals found</p>
+  if (!items.length && !loading)
+    return (
+      <main className="flex flex-1 items-center justify-center">
+        <p className="text-zinc-400">no active peripherals found</p>
+      </main>
+    )
 
   return (
     <>
-      {Object.entries(grouped).map(([type, peripherals]) => (
+      {TYPE_ORDER.map((type) => (
         <section key={type} className="mb-10 last:mb-0">
           <h2 className="mb-4 flex items-center gap-2 text-xl font-semibold text-white">
-            {ICONS[type as Peripheral['type']]}
-            {TYPE_NAMES[type as Peripheral['type']] ?? `${type}s`}
+            {ICONS[type]}
+            {TYPE_NAMES[type] ?? `${type}s`}
           </h2>
 
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            {peripherals.map((item) => (
-              <div
-                key={item.id}
-                className="group flex flex-col rounded-lg border border-zinc-700 bg-zinc-900 p-4 transition-all duration-300 hover:scale-[1.02] hover:border-zinc-500 hover:shadow-md"
-              >
-                <div className="flex items-center gap-1 text-xs text-zinc-400">
-                  <span className="text-zinc-500">{ICONS[item.type]}</span>
-                  <span className="lowercase group-hover:text-[#ff9a9a]">{item.type}</span>
-                </div>
-
-                <div className="mt-2 text-sm font-semibold text-white">
-                  {item.brand} {item.name}
-                </div>
-
-                {item.sub && <div className="mt-1 text-xs text-zinc-400">{item.sub}</div>}
-
-                {item.using && <div className="mt-1 text-xs text-[#ff9a9a]">in use</div>}
-              </div>
-            ))}
+          <div className="grid auto-rows-fr grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            {loading
+              ? Array.from({ length: skeletonCount }).map((_, i) => <PeripheralSkeleton key={i} />)
+              : grouped[type]?.map((item) => <PeripheralCard key={item.id} item={item} />)}
           </div>
         </section>
       ))}

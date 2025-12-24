@@ -5,4 +5,5 @@ export interface Peripheral {
   name: string
   sub: string | null
   using: boolean
+  link: string | null
 }
