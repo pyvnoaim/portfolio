@@ -29,7 +29,7 @@ export default async function Home() {
           <LinkCard url="https://gearz.gg/pyvno" title="gearz" />
           <LinkCard url="https://x.com/pyvnoaim" title="twitter" />
           <LinkCard url="https://evxl.app/u/pyvno" title="benchmarks" />
-          <LinkCard url="https://tracker.gg" title="Tracker" />
+          <LinkCard url="https://konect.gg/rtiaul" title="ritual" />
         </div>
       </div>
 
