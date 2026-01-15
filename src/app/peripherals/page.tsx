@@ -37,7 +37,7 @@ export default function Page() {
         const data: Peripheral[] = await res.json()
         setItems(data)
       } catch (err) {
-        console.error('Failed to fetch peripherals', err)
+        console.error('failed to fetch peripherals', err)
       } finally {
         setLoading(false)
       }
@@ -68,12 +68,12 @@ export default function Page() {
     return map
   }, [items])
 
-  const skeletonCount = 8
+  const skeletonCount = 4
 
   if (!items.length && !loading) {
     return (
       <main className="flex flex-1 items-center justify-center">
-        <p className="text-zinc-400">No active peripherals found</p>
+        <p className="text-zinc-400">no active peripherals found</p>
       </main>
     )
   }

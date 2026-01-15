@@ -5,22 +5,27 @@ import { MdOutlineMouse } from 'react-icons/md'
 import { FaRegKeyboard } from 'react-icons/fa'
 import { LuSquareMousePointer } from 'react-icons/lu'
 
-const ICONS: Record<Peripheral['type'], React.ReactElement> = {
-  mouse: <MdOutlineMouse className="text-md" />,
-  mousepad: <LuSquareMousePointer className="text-md" />,
-  keyboard: <FaRegKeyboard className="text-md" />,
-  headset: <FiHeadphones className="text-md" />,
+const ICONS: Record<Peripheral['type'], React.ComponentType<{ className?: string }>> = {
+  mouse: MdOutlineMouse,
+  mousepad: LuSquareMousePointer,
+  keyboard: FaRegKeyboard,
+  headset: FiHeadphones,
 }
+
+const cardClasses =
+  'group flex h-full flex-col rounded-lg border border-zinc-700 bg-zinc-900 p-4 transition-all duration-300 hover:scale-[1.02] hover:border-zinc-500 hover:shadow-md'
 
 interface PeripheralCardProps {
   item: Peripheral
 }
 
 export default function PeripheralCard({ item }: PeripheralCardProps) {
-  const content = (
-    <div className="group flex h-full flex-col rounded-lg border border-zinc-700 bg-zinc-900 p-4 transition-all duration-300 hover:scale-[1.02] hover:border-zinc-500 hover:shadow-md">
+  const Icon = ICONS[item.type]
+
+  const inner = (
+    <div className={cardClasses}>
       <div className="flex items-center gap-1 text-xs text-zinc-400">
-        <span className="text-zinc-500">{ICONS[item.type]}</span>
+        <Icon className="text-md text-zinc-500" />
         <span className="lowercase group-hover:text-[#ff9a9a]">{item.type}</span>
       </div>
 
@@ -28,21 +33,21 @@ export default function PeripheralCard({ item }: PeripheralCardProps) {
         {item.brand} {item.name}
       </div>
 
-      {item.sub && <div className="mt-1 text-xs text-zinc-400">{item.sub}</div>}
-      {item.using && <div className="mt-1 text-xs text-[#ff9a9a]">in use</div>}
+      {(item.using || item.sub) && (
+        <div className="mt-1 flex items-center text-xs">
+          {item.using && <span className="text-[#ff9a9a]">in use</span>}
+          {item.using && item.sub && <span className="px-1 text-zinc-400">-</span>}
+          {item.sub && <span className="text-zinc-400">{item.sub}</span>}
+        </div>
+      )}
     </div>
   )
 
-  if (!item.link) return content
-
-  return (
-    <Link
-      href={item.link ?? '#'}
-      target={item.link ? '_blank' : undefined}
-      rel={item.link ? 'noopener noreferrer' : undefined}
-      className="block h-full"
-    >
-      {content}
+  return item.link ? (
+    <Link href={item.link} target="_blank" rel="noopener noreferrer" className="block h-full">
+      {inner}
     </Link>
+  ) : (
+    inner
   )
 }
