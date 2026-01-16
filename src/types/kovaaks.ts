@@ -17,6 +17,6 @@ export interface Highscore {
   timestamp: string
   scenario: string
   score: number
-  rank: number
-  cm360: number
+  rank: number | null
+  cm360: number | null
 }
