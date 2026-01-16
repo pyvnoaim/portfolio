@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 
 export default function PeripheralsLayout({ children }: { children: ReactNode }) {
   return (
-    <section className="w-full px-4 pt-6 pb-6 sm:px-6 md:px-8">
+    <section className="w-full">
       <div className="mx-auto w-full max-w-7xl">{children}</div>
     </section>
   )

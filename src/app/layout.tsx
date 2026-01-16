@@ -69,7 +69,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     >
       <body className="flex min-h-screen flex-col">
         <Navbar />
-        <main className="flex w-full flex-1 flex-col items-center justify-start overflow-auto pt-16">
+        <main className="flex w-full flex-1 flex-col items-center justify-start overflow-auto px-4 pt-16 sm:px-6 md:px-8">
           {children}
         </main>
         <Footer />

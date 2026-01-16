@@ -1,20 +1,9 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { FiHeadphones } from 'react-icons/fi'
-import { MdOutlineMouse } from 'react-icons/md'
-import { FaRegKeyboard } from 'react-icons/fa'
-import { LuSquareMousePointer } from 'react-icons/lu'
 import type { Peripheral } from '@/types'
 import PeripheralCard from '@/components/PeripheralCard'
-import Loading from './loading'
-
-const ICONS: Record<Peripheral['type'], React.ReactElement> = {
-  mouse: <MdOutlineMouse className="text-lg" />,
-  mousepad: <LuSquareMousePointer className="text-lg" />,
-  keyboard: <FaRegKeyboard className="text-lg" />,
-  headset: <FiHeadphones className="text-lg" />,
-}
+import PeripheralLoading from './loading'
 
 const TYPE_NAMES: Record<Peripheral['type'], string> = {
   mouse: 'mice',
@@ -56,25 +45,24 @@ export default function Page() {
 
   if (!items.length && !loading) {
     return (
-      <main className="flex flex-1 items-center justify-center">
+      <main className="flex flex-1 items-center justify-center px-4 sm:px-6 md:px-8">
         <p className="text-zinc-400">no active peripherals found</p>
       </main>
     )
   }
 
   return (
-    <>
+    <div className="flex w-full flex-col space-y-8 px-4 py-6 sm:space-y-10 sm:px-6 md:space-y-12 md:px-8">
       {TYPE_ORDER.map((type) => (
-        <section key={type} className="mb-10 last:mb-0">
-          <h2 className="mt-3 mb-4 flex flex-col items-center justify-center gap-2 text-xl font-semibold text-white">
-            {ICONS[type]}
+        <section key={type} className="w-full">
+          <h2 className="mb-4 text-center text-xl font-semibold text-white sm:text-2xl md:text-3xl">
             {TYPE_NAMES[type]}
           </h2>
 
           {loading ? (
-            <Loading />
+            <PeripheralLoading count={4} />
           ) : (
-            <div className="grid auto-rows-fr grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            <div className="grid auto-rows-fr grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
               {grouped[type]?.map((item) => (
                 <PeripheralCard key={item.id} item={item} />
               ))}
@@ -82,6 +70,6 @@ export default function Page() {
           )}
         </section>
       ))}
-    </>
+    </div>
   )
 }

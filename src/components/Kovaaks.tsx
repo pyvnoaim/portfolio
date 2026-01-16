@@ -1,9 +1,10 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import type { Highscore, KovaaksActivityItem } from '@/types/kovaaks'
+import type { Highscore, KovaaksActivityItem } from '@/types'
 import HighscoreCard from '@/components/HighscoreCard'
-import KovaaksLoading from './loading'
+import HighscoreCardSkeleton from '@/components/HighscoreCardSkeleton'
+import { useFormatDate } from '@/lib/useFormatDate'
 
 const buildHighscore = (item: KovaaksActivityItem, entry?: Partial<Highscore>): Highscore => ({
   timestamp: new Date(item.timestamp).toISOString(),
@@ -46,23 +47,11 @@ async function fetchLeaderboardRank(
   }
 }
 
-const formatDate = (timestamp?: string) => {
-  if (!timestamp) return 'unknown date'
-  const parsed = new Date(timestamp)
-  if (isNaN(parsed.getTime())) return 'unknown date'
-  return new Intl.DateTimeFormat('en-GB', {
-    day: '2-digit',
-    month: '2-digit',
-    year: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-  }).format(parsed)
-}
-
 export default function Kovaaks() {
   const [highscores, setHighscores] = useState<Highscore[]>([])
   const [loading, setLoading] = useState(true)
   const username = 'pyvno'
+  const formatDate = useFormatDate()
 
   useEffect(() => {
     const loadHighscores = async () => {
@@ -90,25 +79,21 @@ export default function Kovaaks() {
         setLoading(false)
       }
     }
+
     loadHighscores()
   }, [username])
 
-  if (loading) return <KovaaksLoading />
-
   return (
-    <div className="flex w-full flex-col items-center space-y-6 sm:px-6 md:px-8">
-      <div className="w-full max-w-2xl">
-        <h1 className="text-center text-lg font-bold sm:text-xl md:text-2xl">latest highscores</h1>
-      </div>
-      <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
-        {highscores.length ? (
-          highscores.map((h) => (
-            <HighscoreCard key={h.timestamp} highscore={h} formatDate={formatDate} />
-          ))
-        ) : (
-          <p className="col-span-full text-center text-zinc-400">no highscores found</p>
-        )}
-      </div>
+    <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+      {loading ? (
+        Array.from({ length: 6 }).map((_, i) => <HighscoreCardSkeleton key={i} />)
+      ) : highscores.length ? (
+        highscores
+          .slice(0, 6)
+          .map((h) => <HighscoreCard key={h.timestamp} highscore={h} formatDate={formatDate} />)
+      ) : (
+        <p className="col-span-full text-center text-zinc-400">no highscores found</p>
+      )}
     </div>
   )
 }

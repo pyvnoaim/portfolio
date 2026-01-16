@@ -12,8 +12,7 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   { label: 'home', href: '/' },
-  { label: 'peripherals', href: '/peripherals' },
-  { label: 'kovaaks', href: '/kovaaks' },
+  { label: 'peripherals.db', href: '/peripherals' },
 ]
 
 export const Navbar: React.FC = () => {
@@ -21,66 +20,67 @@ export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <nav className="fixed top-0 z-50 w-full bg-zinc-900/70 py-4 backdrop-blur-sm duration-300 select-none">
-      <div className="flex items-center justify-between px-4 sm:px-0">
-        <div className="hidden w-full justify-center gap-6 sm:flex">
+    <nav className="fixed top-0 z-50 w-full bg-zinc-900/70 py-4 shadow-md backdrop-blur-sm select-none">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6">
+        {/* Desktop Links */}
+        <div className="hidden gap-8 sm:flex">
           {navItems.map((item) => {
             const isActive = pathname === item.href
             return (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`text-md relative flex items-center justify-center px-4 py-2 transition-all duration-300 ${
-                  isActive
-                    ? 'text-[#ff9a9a] hover:scale-105'
-                    : 'text-zinc-300 hover:scale-105 hover:text-[#ff9a9a]'
+                className={`relative px-3 py-2 text-sm font-medium transition-all duration-300 ${
+                  isActive ? 'text-[#ff9a9a]' : 'text-zinc-300 hover:text-[#ff9a9a]'
                 }`}
-                aria-label={item.label}
               >
+                {item.label}
                 <span
-                  className={`absolute bottom-0 left-0 h-0.5 w-full origin-left bg-[#ff9a9a] transition-transform duration-300 ${
+                  className={`absolute bottom-0 left-0 h-0.5 w-full bg-[#ff9a9a] transition-transform duration-300 ${
                     isActive ? 'scale-x-100' : 'scale-x-0'
-                  }`}
+                  } origin-left`}
                 ></span>
-                <span>{item.label}</span>
               </Link>
             )
           })}
         </div>
 
-        <div className="flex w-full justify-end sm:hidden">
+        {/* Mobile Toggle */}
+        <div className="sm:hidden">
           <button
-            className="text-2xl text-zinc-300 hover:text-[#ff9a9a]"
+            className="text-2xl text-zinc-300 hover:text-[#ff9a9a] focus:outline-none"
             onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle menu"
           >
             {isOpen ? <FiX /> : <FiMenu />}
           </button>
         </div>
       </div>
 
+      {/* Mobile Menu */}
       {isOpen && (
-        <div className="mt-2 flex flex-col gap-4 px-4 sm:hidden">
-          {navItems.map((item) => {
-            const isActive = pathname === item.href
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`text-md relative flex items-center justify-start px-4 py-2 transition-all duration-300 ${
-                  isActive ? 'text-[#ff9a9a]' : 'text-zinc-300 hover:text-[#ff9a9a]'
-                }`}
-                aria-label={item.label}
-                onClick={() => setIsOpen(false)}
-              >
-                <span
-                  className={`absolute top-1/2 left-0 h-0.5 w-6 origin-left bg-[#ff9a9a] transition-transform duration-300 ${
-                    isActive ? 'scale-x-100' : 'scale-x-0'
-                  } -translate-y-1/2`}
-                ></span>
-                <span className="pl-8">{item.label}</span>
-              </Link>
-            )
-          })}
+        <div className="mt-2 w-full origin-top transform transition-all duration-200 sm:hidden">
+          <div className="flex flex-col gap-4 rounded-md bg-zinc-900/90 px-4 pb-4 shadow-lg backdrop-blur-md">
+            {navItems.map((item) => {
+              const isActive = pathname === item.href
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setIsOpen(false)}
+                  className={`relative px-3 py-2 text-sm font-medium transition-colors duration-300 ${
+                    isActive ? 'text-[#ff9a9a]' : 'text-zinc-300 hover:text-[#ff9a9a]'
+                  }`}
+                >
+                  {item.label}
+                  {/* Active underline on mobile moved below text */}
+                  {isActive && (
+                    <span className="absolute bottom-0 left-0 h-0.5 w-full bg-[#ff9a9a]"></span>
+                  )}
+                </Link>
+              )
+            })}
+          </div>
         </div>
       )}
     </nav>
