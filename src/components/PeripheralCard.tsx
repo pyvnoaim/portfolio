@@ -27,7 +27,7 @@ export default function PeripheralCard({ item }: PeripheralCardProps) {
       <div className="flex flex-col space-y-2">
         <div className="flex items-center gap-1 text-xs text-zinc-400">
           <Icon className="h-4 w-4 text-zinc-500" />
-          <span className="lowercase">{item.type}</span>
+          <span className="sub-text lowercase">{item.type}</span>
         </div>
 
         <div className="text-sm font-semibold text-white transition-colors duration-300 group-hover:text-[#ff9a9a]">

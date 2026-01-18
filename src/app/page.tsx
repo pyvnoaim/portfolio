@@ -3,6 +3,7 @@ import LinkCard from '@/components/LinkCard'
 import Kovaaks from '@/components/Kovaaks'
 import { Peripheral } from '@/types'
 import SectionLayout from '@/components/SectionLayout'
+import TextType from '@/components/TextType'
 
 async function getPeripherals(): Promise<Peripheral[]> {
   const res = await fetch('http://pyvno.xyz/api/peripherals/active')
@@ -60,6 +61,19 @@ export default async function Home() {
             />
           </div>
         </div>
+      </SectionLayout>
+
+      {/* Achievements */}
+      <SectionLayout title="achievements">
+        <span className="flex w-full items-center justify-center">
+          <TextType
+            text={['coming soon!', 'stay tuned!']}
+            cursorCharacter="_"
+            typingSpeed={75}
+            deletingSpeed={75}
+            className="text-zinc-400 italic"
+          />
+        </span>
       </SectionLayout>
     </div>
   )

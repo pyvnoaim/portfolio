@@ -20,7 +20,7 @@ export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <nav className="fixed top-0 z-50 w-full bg-zinc-900/70 py-4 shadow-md backdrop-blur-sm select-none">
+    <nav className="fixed top-0 z-50 w-full border-b border-zinc-700 bg-zinc-900/70 py-4 shadow-lg backdrop-blur-sm">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6">
         {/* Desktop Links */}
         <div className="hidden gap-8 sm:flex">
