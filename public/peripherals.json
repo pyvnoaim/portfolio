@@ -6,6 +6,7 @@
     "name": "x2f",
     "sub": "artisan mizugumo futae p8",
     "using": false,
+    "new": false,
     "link": "https://www.maxgaming.gg/de/kabellos/labx2f-size1-schwarz"
   },
   {
@@ -15,6 +16,7 @@
     "name": "fx raiden",
     "sub": "soft - daidai orange",
     "using": true,
+    "new": false,
     "link": "https://www.maxgaming.gg/de/mauspads/mauspad-fx-raiden-soft-xl-daidai-orange"
   },
   {
@@ -24,6 +26,7 @@
     "name": "60he",
     "sub": "",
     "using": true,
+    "new": false,
     "link": "https://wooting.io/wooting-60he"
   },
   {
@@ -33,6 +36,7 @@
     "name": "lucid",
     "sub": "",
     "using": true,
+    "new": false,
     "link": "https://www.maxgaming.gg/de/kopfhorer/lucid-in-ear-headset"
   },
   {
@@ -42,6 +46,7 @@
     "name": "akitsu",
     "sub": "",
     "using": false,
+    "new": false,
     "link": "https://www.maxgaming.gg/de/kabellos/vancer-akitsu-carbon-fiber"
   },
   {
@@ -51,6 +56,7 @@
     "name": "op1 8k v2",
     "sub": "artisan mizugumo futae p8",
     "using": true,
+    "new": false,
     "link": "https://www.maxgaming.gg/de/kabelgebunden/endgame-gear-op1-8k-v2-vit"
   },
   {
@@ -60,6 +66,7 @@
     "name": "tenz signature",
     "sub": "want to sell",
     "using": false,
+    "new": false,
     "link": "https://www.maxgaming.gg/de/kabellos/pulsar-tenz-signature-edition"
   },
   {
@@ -69,6 +76,7 @@
     "name": "energon pro",
     "sub": "",
     "using": false,
+    "new": false,
     "link": "https://www.maxgaming.gg/de/mauspads/energon-pro-hybrid-gaming-mauspad-xsoft"
   },
   {
@@ -78,6 +86,7 @@
     "name": "saturn",
     "sub": "",
     "using": false,
+    "new": false,
     "link": "https://www.maxgaming.gg/de/mauspads/saturn-gaming-mauspad-xl"
   },
   {
@@ -87,6 +96,7 @@
     "name": "singularity",
     "sub": "founder's edition",
     "using": false,
+    "new": false,
     "link": "https://www.maxgaming.gg/de/mauspads/singularity-glas-mauspad-fe"
   },
   {
@@ -96,6 +106,7 @@
     "name": "cr-005",
     "sub": "black",
     "using": false,
+    "new": false,
     "link": "https://wallhack.com/de-de/products/cr-005-black"
   },
   {
@@ -105,6 +116,7 @@
     "name": "sy-001",
     "sub": "frenzy sora",
     "using": false,
+    "new": false,
     "link": "https://wallhack.com/de-de/pages/blind-box"
   },
   {
@@ -114,7 +126,8 @@
     "name": "sp-004",
     "sub": "twins",
     "using": false,
-    "link": "https://wallhack.com/de-de/products/sp-004-black"
+    "new": false,
+    "link": "https://wallhack.com/de-de/pages/museum"
   },
   {
     "id": 14,
@@ -123,6 +136,17 @@
     "name": "crinacle zero",
     "sub": "blue",
     "using": false,
+    "new": false,
     "link": "https://www.maxgaming.gg/de/kopfhorer/zero-iem-kopfhorer-blau"
+  },
+  {
+    "id": 15,
+    "type": "mousepad",
+    "brand": "wallhack",
+    "name": "sp-005",
+    "sub": "evangelion",
+    "using": false,
+    "new": true,
+    "link": "https://wallhack.com/en-de/products/sp-005-evangelion"
   }
 ]

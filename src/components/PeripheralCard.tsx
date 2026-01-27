@@ -13,7 +13,7 @@ const ICONS: Record<Peripheral['type'], React.ComponentType<{ className?: string
 }
 
 const cardClasses =
-  'group flex h-full flex-col rounded-lg border border-zinc-700 bg-zinc-900 p-4 transition-all duration-300 hover:scale-[1.02] hover:border-zinc-500 hover:shadow-md'
+  'relative group flex h-full flex-col rounded-lg border border-zinc-700 bg-zinc-900 p-4 transition-all duration-300 hover:scale-[1.02] hover:border-zinc-500 hover:shadow-md'
 
 interface PeripheralCardProps {
   item: Peripheral
@@ -24,6 +24,12 @@ export default function PeripheralCard({ item }: PeripheralCardProps) {
 
   const inner = (
     <div className={cardClasses}>
+      {item.new && (
+        <span className="absolute top-2 right-2 rounded bg-[#ff9a9a] px-1.5 py-0.5 text-[10px] font-semibold text-zinc-900">
+          new
+        </span>
+      )}
+
       <div className="flex flex-col space-y-2">
         <div className="flex items-center gap-1 text-xs text-zinc-400">
           <Icon className="h-4 w-4 text-zinc-500" />
