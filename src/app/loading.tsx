@@ -57,7 +57,7 @@ export default function Loading() {
       </Section>
 
       {/* Kovaaks */}
-      <Section title="latest highscores">
+      <Section title="latest kovaaks scores">
         <div className="grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-2 md:grid-cols-3">
           {Array.from({ length: kovaaksSkeletonCount }).map((_, i) => (
             <HighscoreCardSkeleton key={i} />

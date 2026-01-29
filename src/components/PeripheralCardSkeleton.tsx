@@ -9,10 +9,11 @@ export default function PeripheralCardSkeleton() {
 
         <div className="h-5 w-3/4 rounded bg-zinc-700" />
 
-        <div className="flex items-center space-x-1 text-xs">
+        <div className="flex items-center space-x-1 text-xs text-zinc-400">
           <div className="h-3 w-10 rounded bg-[#ff9a9a]/50" />
-          <div className="h-3 w-3 rounded bg-zinc-700" />
-          <div className="h-3 w-16 rounded bg-zinc-700" />
+          <div className="h-3 w-12 rounded bg-zinc-700" />
+          <div className="h-3 w-8 rounded bg-zinc-700" />
+          <div className="h-3 w-14 rounded bg-zinc-700" />
         </div>
       </div>
     </div>

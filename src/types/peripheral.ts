@@ -1,10 +1,15 @@
+export type PeripheralType = 'mouse' | 'mousepad' | 'keyboard' | 'headset'
+
 export interface Peripheral {
   id: number
-  type: 'mouse' | 'mousepad' | 'keyboard' | 'headset'
+  type: PeripheralType
   brand: string
   name: string
-  sub: string | null
+  variant: string | null
+  color: string | null
+  info: string | null
   using: boolean
-  new: boolean
   link: string | null
+  since: string | null
+  image: string | null
 }

@@ -51,7 +51,7 @@ export default async function Home() {
       </SectionLayout>
 
       {/* Kovaaks */}
-      <SectionLayout title="latest highscores">
+      <SectionLayout title="latest kovaaks scores">
         <Kovaaks />
       </SectionLayout>
 
