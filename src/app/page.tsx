@@ -8,6 +8,7 @@ import Kovaaks from '@/components/Kovaaks'
 import { Peripheral } from '@/types'
 import SectionLayout from '@/components/SectionLayout'
 import AchievementCard from '@/components/AchievementCard'
+import TextType from '@/components/TextType'
 
 export default function Home() {
   const [items, setItems] = useState<Peripheral[]>([])
@@ -65,7 +66,7 @@ export default function Home() {
         </div>
       </SectionLayout>
 
-      {/* Kovaaks */}
+      {/* Kovaaks Scores */}
       <SectionLayout title="latest kovaaks scores">
         <Kovaaks />
       </SectionLayout>
@@ -82,6 +83,19 @@ export default function Home() {
               allowFullScreen
             />
           </div>
+        </div>
+      </SectionLayout>
+
+      {/* Kovaaks Playlists */}
+      <SectionLayout title="kovaaks playlists">
+        <div className="flex flex-wrap justify-center">
+          <TextType
+            text={['coming soon...', 'stay tuned!']}
+            cursorCharacter="_"
+            typingSpeed={75}
+            deletingSpeed={75}
+            className="text-sm text-zinc-400 italic"
+          />
         </div>
       </SectionLayout>
     </div>

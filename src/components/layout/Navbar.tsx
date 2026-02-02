@@ -46,9 +46,9 @@ export const Navbar: React.FC = () => {
         </div>
 
         {/* Mobile Toggle */}
-        <div className="sm:hidden">
+        <div className="flex items-center sm:hidden">
           <button
-            className="text-2xl text-zinc-300 hover:text-[#ff9a9a] focus:outline-none"
+            className="flex items-center justify-center text-2xl text-zinc-300 hover:text-[#ff9a9a] focus:outline-none"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
@@ -73,7 +73,6 @@ export const Navbar: React.FC = () => {
                   }`}
                 >
                   {item.label}
-                  {/* Active underline on mobile moved below text */}
                   {isActive && (
                     <span className="absolute bottom-0 left-0 h-0.5 w-full bg-[#ff9a9a]"></span>
                   )}
