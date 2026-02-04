@@ -30,5 +30,3 @@ jobs:
           tags: |
             ${{ secrets.DOCKER_HUB_USERNAME }}/portfolio:${{ github.sha }}
             ${{ secrets.DOCKER_HUB_USERNAME }}/portfolio:latest
-          cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/portfolio:cache
-          cache-to: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/portfolio:cache,mode=max
