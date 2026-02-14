@@ -8,7 +8,7 @@ import Kovaaks from '@/components/Kovaaks'
 import { Peripheral } from '@/types'
 import SectionLayout from '@/components/SectionLayout'
 import AchievementCard from '@/components/AchievementCard'
-import TextType from '@/components/TextType'
+// import TextType from '@/components/TextType'
 
 export default function Home() {
   const [items, setItems] = useState<Peripheral[]>([])
@@ -76,7 +76,7 @@ export default function Home() {
         <div className="flex flex-col items-center gap-6 sm:flex-row sm:justify-center sm:gap-8">
           <div className="mx-auto aspect-video w-full max-w-lg sm:w-3/5 md:w-2/5">
             <iframe
-              className="h-full w-full rounded-lg shadow-lg"
+              className="h-full w-full rounded-lg border border-zinc-700 shadow-lg transition-all duration-300 hover:scale-[1.02] hover:border-zinc-500 hover:shadow-md"
               src="https://www.youtube.com/embed/ff4ka5-7khM"
               title="YouTube Video"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -86,7 +86,7 @@ export default function Home() {
         </div>
       </SectionLayout>
 
-      {/* Kovaaks Playlists */}
+      {/* Kovaaks Playlists
       <SectionLayout title="kovaaks playlists">
         <div className="flex flex-wrap justify-center">
           <TextType
@@ -97,7 +97,7 @@ export default function Home() {
             className="text-sm text-zinc-400 italic"
           />
         </div>
-      </SectionLayout>
+      </SectionLayout> */}
     </div>
   )
 }

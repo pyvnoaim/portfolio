@@ -13,6 +13,7 @@ interface NavItem {
 const navItems: NavItem[] = [
   { label: 'home', href: '/' },
   { label: 'peripherals.db', href: '/peripherals' },
+  { label: 'settings', href: '/settings' },
 ]
 
 export const Navbar: React.FC = () => {
