@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import type { Peripheral } from '@/types'
 import PeripheralCard from '@/components/PeripheralCard'
 import PeripheralLoading from './loading'
@@ -14,7 +14,6 @@ const TYPE_NAMES: Record<Peripheral['type'], string> = {
 
 const TYPE_ORDER: Peripheral['type'][] = ['mouse', 'mousepad', 'keyboard', 'headset']
 
-// Sort peripherals: in use first, then newest acquired
 function sortPeripherals(a: Peripheral, b: Peripheral): number {
   if (a.using !== b.using) return Number(b.using) - Number(a.using)
 
@@ -27,28 +26,42 @@ export default function Page() {
   const [items, setItems] = useState<Peripheral[]>([])
   const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
-    const fetchPeripherals = async () => {
-      try {
-        const res = await fetch('/api/peripherals')
-        const data: Peripheral[] = await res.json()
-        setItems(data)
-      } catch (err) {
-        console.error('failed to fetch peripherals', err)
-      } finally {
-        setLoading(false)
-      }
+  const fetchPeripherals = async () => {
+    try {
+      setLoading(true)
+
+      const res = await fetch('/api/peripherals', {
+        cache: 'no-store',
+      })
+
+      if (!res.ok) throw new Error('failed to fetch')
+
+      const data: Peripheral[] = await res.json()
+      setItems(data)
+    } catch (err) {
+      console.error('failed to fetch peripherals', err)
+    } finally {
+      setLoading(false)
     }
+  }
+
+  useEffect(() => {
+    const controller = new AbortController()
+
     fetchPeripherals()
+
+    return () => controller.abort()
   }, [])
 
-  const grouped = TYPE_ORDER.reduce(
-    (acc, type) => {
-      acc[type] = items.filter((item) => item.type === type).sort(sortPeripherals)
-      return acc
-    },
-    {} as Record<Peripheral['type'], Peripheral[]>,
-  )
+  const grouped = useMemo(() => {
+    return TYPE_ORDER.reduce(
+      (acc, type) => {
+        acc[type] = items.filter((item) => item.type === type).sort(sortPeripherals)
+        return acc
+      },
+      {} as Record<Peripheral['type'], Peripheral[]>,
+    )
+  }, [items])
 
   if (!items.length && !loading) {
     return (

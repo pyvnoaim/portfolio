@@ -107,7 +107,6 @@ export default function PeripheralModal({ item, open, onClose }: PeripheralModal
             {item.info && <div>info: {item.info}</div>}
             {item.surface && <div>surface: {item.surface}</div>}
             {item.skates && <div>skates: {item.skates}</div>}
-
             {item.acquired && <div>acquired: {formatDate(item.acquired)}</div>}
 
             {typeof item.rating === 'number' && (

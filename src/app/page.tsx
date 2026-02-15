@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import PeripheralCard from '@/components/PeripheralCard'
 import PeripheralCardSkeleton from '@/components/PeripheralCardSkeleton'
 import LinkCard from '@/components/LinkCard'
@@ -8,34 +8,51 @@ import Kovaaks from '@/components/Kovaaks'
 import { Peripheral } from '@/types'
 import SectionLayout from '@/components/SectionLayout'
 import AchievementCard from '@/components/AchievementCard'
-// import TextType from '@/components/TextType'
+
+const TYPE_ORDER: Record<Peripheral['type'], number> = {
+  mouse: 0,
+  mousepad: 1,
+  keyboard: 2,
+  headset: 3,
+}
 
 export default function Home() {
   const [items, setItems] = useState<Peripheral[]>([])
   const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
-    const fetchPeripherals = async () => {
-      try {
-        const res = await fetch('/api/peripherals/active')
-        const data: Peripheral[] = await res.json()
-        setItems(data)
-      } catch (err) {
+  const fetchPeripherals = async (signal?: AbortSignal) => {
+    try {
+      setLoading(true)
+
+      const res = await fetch('/api/peripherals?using=true', {
+        cache: 'no-store',
+        signal,
+      })
+
+      if (!res.ok) throw new Error('failed to fetch')
+
+      const data: Peripheral[] = await res.json()
+      setItems(data)
+    } catch (err) {
+      if ((err as Error).name !== 'AbortError') {
         console.error('failed to fetch peripherals', err)
-      } finally {
-        setLoading(false)
       }
+    } finally {
+      setLoading(false)
     }
-    fetchPeripherals()
+  }
+
+  useEffect(() => {
+    const controller = new AbortController()
+    fetchPeripherals(controller.signal)
+    return () => controller.abort()
   }, [])
 
-  const sortedItems = items.sort((a, b) => {
-    const order = { mouse: 0, mousepad: 1, keyboard: 2, headset: 3 }
-    return (order[a.type] ?? 99) - (order[b.type] ?? 99)
-  })
-
-  if (!items.length && !loading)
-    return <p className="mt-8 text-center text-zinc-400">no active peripherals found</p>
+  const sortedItems = useMemo(() => {
+    return [...items].sort((a, b) => {
+      return (TYPE_ORDER[a.type] ?? 99) - (TYPE_ORDER[b.type] ?? 99)
+    })
+  }, [items])
 
   return (
     <div className="flex w-full flex-col items-center space-y-8 px-4 py-6 sm:space-y-10 sm:px-6 md:space-y-12 md:px-8">
@@ -51,11 +68,23 @@ export default function Home() {
 
       {/* Peripherals */}
       <SectionLayout title="active peripherals">
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          {loading
-            ? Array.from({ length: 4 }).map((_, i) => <PeripheralCardSkeleton key={i} />)
-            : sortedItems.map((item) => <PeripheralCard key={item.id} item={item} />)}
-        </div>
+        {loading ? (
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            {Array.from({ length: 4 }).map((_, i) => (
+              <PeripheralCardSkeleton key={i} />
+            ))}
+          </div>
+        ) : sortedItems.length > 0 ? (
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            {sortedItems.map((item) => (
+              <PeripheralCard key={item.id} item={item} />
+            ))}
+          </div>
+        ) : (
+          <p className="col-span-full mt-4 text-center text-zinc-400">
+            no active peripherals found
+          </p>
+        )}
       </SectionLayout>
 
       {/* Achievements */}
@@ -85,19 +114,6 @@ export default function Home() {
           </div>
         </div>
       </SectionLayout>
-
-      {/* Kovaaks Playlists
-      <SectionLayout title="kovaaks playlists">
-        <div className="flex flex-wrap justify-center">
-          <TextType
-            text={['coming soon...', 'stay tuned!']}
-            cursorCharacter="_"
-            typingSpeed={75}
-            deletingSpeed={75}
-            className="text-sm text-zinc-400 italic"
-          />
-        </div>
-      </SectionLayout> */}
     </div>
   )
 }
